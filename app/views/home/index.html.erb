@@ -8,7 +8,7 @@
     <ul>
       <% category.tasks.each do |task|  %>
       <li>
-        <%= task.title  %>
+        <%= task.title  %><%= link_to "Hide", "", class: 'hide', data: {'js-hide-link' => true} %>
         <% unless task.deadline.nil? %>
           , to read: <%= task.deadline.strftime('%D')  %>
         <% end %>

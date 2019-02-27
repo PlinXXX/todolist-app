@@ -10,7 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require jquery3
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $('[data-js-hide-link]').click(function(event){
+    event.preventDefault(); 
+    alert('You clicked the Hide link');	
+  });
+
+	$navButton = $('.navbar-toggler');
+	$navButton.on('click', () => {
+		$('#navbarTogglerDemo03').toggle('collapse');
+		console.log($('.nav-item'));
+	});
+});	
