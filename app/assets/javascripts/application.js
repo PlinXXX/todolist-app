@@ -26,19 +26,40 @@ $(document).ready(function() {
 		// let cards = liListContainer.querySelectorAll('.card');
 		// console.log(cards);
 
-		$list = $('.container li');
-		$cards = $('.card');
+		$list = $('.title');
+		$taskList = $('.container .card');
+
+		console.log($list);
+		console.log($taskList);
 
 			$list.eq(0).on('click', () => {
-				$cards.eq(0).toggle();
+				$list.eq(0).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #b2bec3; border-color: #2d3436; border-radius: 5px 5px;')
+				$list.eq(1).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;')
+				$list.eq(2).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;')
+
+				$taskList.eq(0).toggle('collapse');
+				$taskList.eq(1).hide();
+				$taskList.eq(2).hide();
 			});
 
-			$list.eq(4).on('click', () => {
-				$cards.eq(1).toggle();
+			$list.eq(1).on('click', () => {
+				$list.eq(1).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #b2bec3; border-color: #2d3436; border-radius: 5px 5px;')
+				$list.eq(2).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;')
+				$list.eq(0).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;')
+
+				$taskList.eq(1).toggle('collapse');
+				$taskList.eq(2).hide();
+				$taskList.eq(0).hide();
 			});			
 
-			$list.eq(8).on('click', () => {
-				$cards.eq(2).toggle();
+			$list.eq(2).on('click', () => {
+				$list.eq(2).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #b2bec3; border-color: #2d3436; border-radius: 5px 5px;')
+				$list.eq(0).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;')
+				$list.eq(1).attr('style', 'display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;')
+				
+				$taskList.eq(2).toggle('collapse');
+				$taskList.eq(0).hide();
+				$taskList.eq(1).hide();
 			});
 	}		
 	Tabulation();
@@ -56,16 +77,60 @@ $(document).ready(function() {
 	// 2.2.2 Modales de connexion/inscription
 	function modales() {
 		$loginForm = $('#login');
-		console.log($loginForm);
+		$loginButton = $('.loginButton');
+
 		$signupForm = $('#signup');
-		console.log($signupForm);
-		$signUpButton = $('.btn.btn-success').eq(0);
-		console.log($signUpButton);
+		$signUpButton = $('.signUpButton');
+
+		$loginButton.on('click', () => {
+			$signupForm.hide();
+			$loginForm.toggle('collapse');
+		});
+
+		$('.close').on('click', () => {
+			$loginForm.hide();
+			$signupForm.hide();
+		});
 
 		$signUpButton.on('click', () => {
+			$loginForm.hide();
 			$signupForm.toggle('collapse');
-		})
+		});
 	}
 	modales();
 
+// 2.3. Carousel
+	function Carousel() {
+		$cards = $('.card.col-3 .rounded-circle');
+		$('.card.col-3').hide();
+
+		$nextButton = $('#nextButton');
+		$previousButton = $('#previousButton');
+
+		$('.card.col-3').eq(0).show();
+		$cards.eq(0).show();
+
+		var i = 0;
+
+		$nextButton.on('click', () => {
+
+			$('.card.col-3').eq(i).hide();
+			i++;
+			if (i == $cards.length) {
+				i = 0;
+			}
+			$('.card.col-3').eq(i).show();
+
+		});
+
+		$previousButton.on('click', () => {
+			$('.card.col-3').eq(i).hide();
+			i--;
+			if (i < 0) {
+				i = $cards.length - 1;
+			}
+			$('.card.col-3').eq(i).show();			
+		});
+	}
+	Carousel();
 });	

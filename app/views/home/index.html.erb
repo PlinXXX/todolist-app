@@ -3,8 +3,8 @@
 <div class="container">
   <ul>
   <% @categories.each do  |category|%>
-  <li><%= category.title  %></li>
-  <div class="card">
+  <li class="title" style="display: inline-block; border: 1px solid #b2bec3; padding: 2px; background-color: #dfe6e9; border-color: #2d3436; border-radius: 5px 5px;"> <%= category.title  %> </li>
+  <div class="card" style="display: none;">
     <ul>
       <% category.tasks.each do |task|  %>
       <li>
@@ -21,9 +21,9 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div>
     <% @tasks.each do |task|  %>
-      <div class="card col-3">
+      <div class="card col-3" style="margin: 0px auto; text-align: center;">
         <% unless task.image.nil? %>
           <%= image_tag task.image, class: "rounded-circle" %>
         <% end %>
@@ -31,3 +31,8 @@
     <% end %>
   </div>
 </div>
+    
+<button id="previousButton" style="float: left;">Previous</button>
+<button id="nextButton" style="float: right;">Next</button>
+
+<br><br><br>

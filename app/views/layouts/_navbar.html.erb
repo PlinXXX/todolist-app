@@ -8,13 +8,10 @@
 
       <% unless user_signed_in? %>
       <li class="nav-item">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#login">Log in</button>
-      </li>
-      <li class="nav-item sign-up">
-        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        <button type="button" class="loginButton btn btn-primary">Log in</button>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-success" data-target="#signup">Sign up</button>
+        <button type="button" class="signUpButton btn btn-secondary">Sign up</button>
       </li>
       <% else %>
       <li class="nav-item log-out">
