@@ -7,15 +7,18 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
       <% unless user_signed_in? %>
-      <li class="nav-item login">
-        <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+      <li class="nav-item">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#login">Log in</button>
       </li>
       <li class="nav-item sign-up">
         <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
       </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-success" data-target="#signup">Sign up</button>
+      </li>
       <% else %>
       <li class="nav-item log-out">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-dark" %>
       </li>
       <% end %>
       <li class="nav-item">
